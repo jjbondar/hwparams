@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Status phone</title>
+  <title>Battery Status API Example</title>
   <script>
     window.onload = function () {
       function updateBatteryStatus(battery) {
-        document.querySelector('#charging').textContent = battery.charging ? 'charging' : 'not charging';
+        document.querySelector('#charging').textContent = battery.charging ? 'Charging' : 'Not charging';
         document.querySelector('#level').textContent = battery.level * 100 + " %";
-        document.querySelector('#dischargingTime').textContent = battery.dischargingTime / 60;
+        document.querySelector('#dischargingTime').textContent = battery.dischargingTime / 3600;
       }
       navigator.getBattery().then(function(battery) {
         updateBatteryStatus(battery);
