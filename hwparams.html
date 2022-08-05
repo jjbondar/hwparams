@@ -7,7 +7,11 @@
       function updateBatteryStatus(battery) {
         document.querySelector('#charging').textContent = battery.charging ? 'Charging' : 'Not charging';
         document.querySelector('#level').textContent = battery.level * 100 + " %";
-        document.querySelector('#dischargingTime').textContent = battery.dischargingTime / 3600;
+        document.querySelector('#dischargingTime').textContent = battery.dischargingTime / 60;
+		let width = screen.width;
+		document.getElementById("width").innerHTML ="Width screen: " + width + "px";
+		let height = screen.height;
+		document.getElementById("height").innerHTML ="Height screen: " + height + "px";
       }
       navigator.getBattery().then(function(battery) {
         updateBatteryStatus(battery);
@@ -29,7 +33,7 @@ body {
 width: 80%;
 }
 button {
-width: 30%;
+width: 50%;
 height: 60px;
 margin: 20px;
 }
@@ -67,12 +71,9 @@ margin: 20px;
   <div id="dischargingTime">(discharging time unknown)</div>
 
 <script>
-let width = screen.width;
-document.getElementById("width").innerHTML ="Width screen: " + width + "px";
-let height = screen.height;
-document.getElementById("height").innerHTML ="Height screen: " + height + "px";
-function myFunction() {  window.navigator.vibrate([100,30,100,30,100,200,200,30,200,30,200,200,100,30,100,30,100]);
-return console.log('hello');}
+	function myFunction() {window.navigator.vibrate([100,30,100,30,100,200,200,30,200,30,200,200,100,30,100,30,100]);
+	return console.log('hello');
+	}
 </script>
 
 </body>
