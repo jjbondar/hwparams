@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Battery Status API Example</title>
+  <script>
+    window.onload = function () {
+      function updateBatteryStatus(battery) {
+        document.querySelector('#charging').textContent = battery.charging ? 'charging' : 'not charging';
+        document.querySelector('#level').textContent = battery.level * 100;
+        document.querySelector('#dischargingTime').textContent = battery.dischargingTime / 60;
+      }
+      navigator.getBattery().then(function(battery) {
+        updateBatteryStatus(battery);
+        battery.onchargingchange = function () {
+          updateBatteryStatus(battery);
+        };
+        battery.onlevelchange = function () {
+          updateBatteryStatus(battery);
+        };
+        battery.ondischargingtimechange = function () {
+          updateBatteryStatus(battery);
+        };
+      });
+    };
+  </script>
+</head>
 <style>
 body {
 width: 80%;
@@ -8,6 +32,9 @@ button {
 width: 30%;
 height: 60px;
 margin: 20px;
+}
+div {
+font-weight: 600;
 }
 @media screen and (max-width: 768px){
 button {
@@ -33,9 +60,11 @@ margin: 20px;
 <h1>The Window Screen Object</h1>
 <h2>The width Property</h2>
 
-<p id="width"></p>
-<p id="height"></p>
-<p id="batterylevel"></p>
+  <div id="width"></div>
+  <div id="height"></div>
+  <div id="charging">(charging state unknown)</div>
+  <div id="level">(battery level unknown)</div>
+  <div id="dischargingTime">(discharging time unknown)</div>
 
 <script>
 let width = screen.width;
@@ -44,12 +73,6 @@ let height = screen.height;
 document.getElementById("height").innerHTML ="Height screen: " + height + "px";
 function myFunction() {  window.navigator.vibrate([100,30,100,30,100,200,200,30,200,30,200,200,100,30,100,30,100]);
 return console.log('hello');
-navigator.getBattery().then(function(battery) {
-  console.log(battery.level);
-  let batteryLevel = battery.level;
-document.getElementById("batterylevel").innerHTML ="Level battery: " + batteryLevel + "%";
-  });
-}
 </script>
 
 </body>
