@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>HTML DOM Events</h1>
+<h2>The onclick Event</h2>
+
+<p>The onclick event triggers a function when an element is clicked on.</p>
+<p>Click to trigger a function that will output "Hello World":</p>
+
+<button onclick="myFunction()" style="width: 160px;
+    height: 60px;
+    background: blue;
+    color: white;
+    font-weight: 600;
+    font-size: 24px;">Click me</button>
+
+<p id="demo"></p>
+
+<h1>The Window and Height Screen Object</h1>
+<h2>The width Property</h2>
+
+<p id="width"></p>
+<p id="height"></p>
+
+<script>
+let width = screen.width;
+document.getElementById("width").innerHTML ="Width screen: " + width + "px";
+let height = screen.height;
+document.getElementById("height").innerHTML ="Height screen: " + height + "px";
+function myFunction() {  window.navigator.vibrate([100,30,100,30,100,200,200,30,200,30,200,200,100,30,100,30,100]);
+return console.log('hello');
+}
+</script>
+
+</body>
+</html>
