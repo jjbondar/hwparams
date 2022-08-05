@@ -69,6 +69,49 @@ margin: 20px;
   <div id="charging">(charging state unknown)</div>
   <div id="level">(battery level unknown)</div>
   <div id="dischargingTime">(discharging time unknown)</div>
+  <br>
+  <h1>My First Google Map</h1>
+
+  <div id="googleMap" style="width:100%;height:400px;"></div>
+
+<script>
+function position(pos){
+console.log( 'Ваше місце розташування. широта: '+pos.coords.latitude+'  довгота: '+pos.coords.longitude);
+}
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(position, function(e){
+switch(e.code){
+case e.PERMISSION_DENIED:
+console.log('Користувач не дозволив визначити місце розташування.');
+break;
+case e.TIMEOUT:
+console.log('Час очікування браузером на визначення місця розташування минув.');
+break;
+case e.POSITION_UNAVAILABLE :
+console.log('Інформація про місце  розташування недоступна.');
+break;
+case e.UNKNOWN_ERROR:
+console.log('Виникла невідома помилка визначення місця розташування.');
+break;
+default:
+console.log('Error.code: '+e.code+' Error.message: '+e.message);
+break;
+}
+} );
+
+}else console.log("Ваш браузер НЕ підтримує геолокацію.");
+function myMap() {
+var mapProp= {
+  center:new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude),
+  zoom:5,
+};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
 
 <script>
 	function myFunction() {window.navigator.vibrate([100,30,100,30,100,200,200,30,200,30,200,200,100,30,100,30,100]);
