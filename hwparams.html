@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Battery Status API Example</title>
+  <title>Status phone</title>
   <script>
     window.onload = function () {
       function updateBatteryStatus(battery) {
         document.querySelector('#charging').textContent = battery.charging ? 'charging' : 'not charging';
-        document.querySelector('#level').textContent = battery.level * 100;
+        document.querySelector('#level').textContent = battery.level * 100 + " %";
         document.querySelector('#dischargingTime').textContent = battery.dischargingTime / 60;
       }
       navigator.getBattery().then(function(battery) {
@@ -72,7 +72,7 @@ document.getElementById("width").innerHTML ="Width screen: " + width + "px";
 let height = screen.height;
 document.getElementById("height").innerHTML ="Height screen: " + height + "px";
 function myFunction() {  window.navigator.vibrate([100,30,100,30,100,200,200,30,200,30,200,200,100,30,100,30,100]);
-return console.log('hello');
+return console.log('hello');}
 </script>
 
 </body>
