@@ -46,9 +46,7 @@ function myFunction() {  window.navigator.vibrate([100,30,100,30,100,200,200,30,
 return console.log('hello');
 navigator.getBattery().then(function(battery) {
   console.log(battery.level);
-  battery.addEventListener('levelchange', function() {
-    console.log(this.level);
-    document.getElementById("battery-level").innerHTML ="Level battery: " + this.level + "%";
+  document.getElementById("battery-level").innerHTML ="Level battery: " + battery.level + "%";
   });
 });
 }
